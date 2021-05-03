@@ -1,0 +1,15 @@
+body{
+    background: url('Fondo.jpg');
+    background-size: 200% 7850% 
+       
+}
+#entrada{
+    position: absolute;
+    top: 25%;
+    left: 10%;
+}
+#salida{
+    position: absolute;
+    top: 25%;
+    left: 50%;
+}

@@ -1,0 +1,21 @@
+body{
+    background: url('Fondo.jpg');
+    background-size: 200% 7850%    
+}
+form{
+    border: 3px solid #E1E1E1;
+    border-radius: 5px;
+    text-align: center;
+    width:250px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+h1{
+    font-size: 60px;
+    color: #483863;
+    position: absolute;
+    top: 15%;
+    left: 40%;
+}
