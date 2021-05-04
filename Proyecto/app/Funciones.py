@@ -92,18 +92,16 @@ def separacion(ruta):
         Sumatoria.tail="\n\t\t"
         Reportes = ET.SubElement(estadistica,"REPORTADO_POR")
         Reportes.text="\n\t\t\t"
-        Reportes.tail="\n\t"
+        Reportes.tail="\n\t\t"
         
         te=list()
         for b in posiciones:
             te.append(Datos[b][1])
         while True:
             correo=te[0]
-            
             cantidad=te.count(correo)
             Usuario= ET.SubElement(Reportes,"USUARIO")
-            Usuario.text="\n\t\t\t\t"
-            
+            Usuario.text="\n\t\t\t\t" 
             Email= ET.SubElement(Usuario,"EMAIL")
             Email.text=correo
             Email.tail="\n\t\t\t\t"
@@ -123,6 +121,60 @@ def separacion(ruta):
             else:
                 Usuario.tail="\n\t\t\t"
 
+        Afectados = ET.SubElement(estadistica,"AFECTADOS")
+        Afectados.text="\n\t\t\t"
+        Afectados.tail="\n\t\t"
+        te2=list()
+        for b in posiciones:
+            for a in Datos[b][2]:
+                te2.append(a) 
+        while True:
+            afe=te2[0]
+            Afectado= ET.SubElement(Afectados,"AFECTADO")
+            Afectado.text=f"{afe}"
+            c=0
+            for f in range(len(te2)):
+                if te2[c]==afe:
+                    te2.pop(c)
+                    c-=1
+                c+=1
+            
+            if len(te2)==0:
+                Afectado.tail="\n\t\t"
+                break
+            else:
+                Afectado.tail="\n\t\t\t"
+
+        Errores = ET.SubElement(estadistica,"ERORRES")
+        Errores.text="\n\t\t\t"
+        Errores.tail="\n\t"
+
+        te3=list()
+        for b in posiciones:
+            te3.append(Datos[b][3])
+        while True:
+            cod=te3[0]
+            cantidad=te3.count(cod)
+            Error= ET.SubElement(Errores,"ERROR")
+            Error.text="\n\t\t\t\t" 
+            Codigo= ET.SubElement(Error,"CODIGO")
+            Codigo.text=cod
+            Codigo.tail="\n\t\t\t\t"
+            Cantidad= ET.SubElement(Error,"CANTIDAD_MENSAJES")
+            Cantidad.text=str(cantidad)
+            Cantidad.tail="\n\t\t\t"
+            co=0
+            for r in range(len(te3)):
+                if te3[co]==cod:
+                    te3.pop(co)
+                    co-=1
+                co+=1
+            if len(te3)==0:
+                Error.tail="\n\t\t"
+                break
+            else:
+                Error.tail="\n\t\t\t"
+
         tamaño=len(Datos)
         cont=0
         for r in range(tamaño):
@@ -136,6 +188,7 @@ def separacion(ruta):
             break
         else:
             estadistica.tail="\n\t"
+
 
     Arbol=ET.ElementTree(estadisticas)
     Arbol.write("estadistica.xml")
