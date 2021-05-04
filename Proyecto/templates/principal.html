@@ -3,17 +3,26 @@
 	{% load static %}
 	<head>
 		<title>login</title>
-		<link rel="stylesheet"  href="{% static 'css/principal.css' %}">
+		<link rel="stylesheet"  href="{% static 'principal.css' %}">
 	</head>
 	<body>
+        <div id="arriba">
+            <input id="submit" type="submit" value="Consultar Datos" class="css_input">      
+            <input id="submit" type="submit" value="Filtrar por Fecha y usuario" class="css_input">
+            <input id="submit" type="submit" value="Filtrar por Fecha y codigo" class="css_input">      
+            <input id="submit" type="submit" value="Estudiante" class="css_input">
+            <input id="submit" type="submit" value="Documentacion" class="css_input">
+        </div>
         <div id="entrada">
-            <textarea name="comentarios" rows="25" cols="70">
-            {{texto1}}
-            
+            <h2>Archivo de entrada</h2>
+            <textarea name="comentarios" rows="25" cols="70">{{texto1}}
             </textarea>
         </div>
         <div id="salida">
-            <textarea name="comentarios2" rows="25" cols="70">Escribe aquí tus comentarios</textarea>
+            <h2>Archivo de salida</h2>
+            <textarea name="comentarios2" rows="25" cols="70">{{texto2}}
+            </textarea>
         </div>
+        
     </body>
 </html>

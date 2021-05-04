@@ -8,11 +8,17 @@ def Login(request):
     return render(request,'login.html')
 
 def Principal(request):
-    direA=request.GET["Direccion_AE"]
-    archivo = open(direA,encoding="utf8")
+    ruta=request.GET["Direccion_AE"]
+    archivo = open(ruta,encoding="utf8")
     mensaje = archivo.read()
     archivo.close()
-    Fun.separacion(str(direA))
-    return render(request,'principal.html',{"texto1":mensaje})
+    Fun.separacion(str(ruta))
+    archivo = open("estadistica.xml",encoding="utf8")
+    mensaje2 = archivo.read()
+    archivo.close()
+    return render(request,'principal.html',{"texto1":mensaje,"texto2":mensaje2})
+
+
+
 
 

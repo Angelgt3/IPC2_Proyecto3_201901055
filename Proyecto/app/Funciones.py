@@ -137,7 +137,6 @@ def separacion(ruta):
         else:
             estadistica.tail="\n\t"
 
-
-
     Arbol=ET.ElementTree(estadisticas)
     Arbol.write("estadistica.xml")
+    

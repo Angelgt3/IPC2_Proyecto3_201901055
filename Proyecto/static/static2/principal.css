@@ -1,0 +1,34 @@
+body{
+    background: url('Fondo.jpg');
+    background-size: 200% 7850%    
+}
+#arriba{
+    position: absolute;
+    top: 5%;
+    left: 10%;
+}
+#entrada{
+    position: absolute;
+    top: 20%;
+    left: 10%;
+}
+#salida{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+}
+.css_input {
+    padding: 7px;
+    font-size: 17px;
+    border-width: 1px;
+    border-color: #CCCCCC;
+    background-color: #615b5b;
+    color: #000000;
+    border-style: solid;
+    height: 40px;
+    box-shadow: 0px 0px 5px rgba(66,66,66,.75);
+    text-shadow: 0px 0px 5px rgba(66,66,66,.75);
+}
+.css_input:focus {
+    outline:none;
+}
