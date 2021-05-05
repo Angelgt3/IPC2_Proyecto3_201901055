@@ -10,13 +10,9 @@ body{
 #entrada{
     position: absolute;
     top: 10%;
-    left: 20%;
+    left: 30%;
 }
-#salida{
-    position: absolute;
-    top: 10%;
-    left: 60%;
-}
+
 .css_input {
     padding: 7px;
     font-size: 17px;

@@ -1,5 +1,46 @@
 import xml.etree.cElementTree as ET
+import webbrowser
+from xml.dom import minidom
 
+def doc():
+    try:
+        nombreArchivo = 'C:/Users/angge/OneDrive/Documentos/GitHub/IPC2_Proyecto3_201901055/Documentacion/Documentacion_IPC2_Proyecto3.pdf'
+        webbrowser.open_new_tab(nombreArchivo)
+    except:
+        print("no se pudo abrir")
+
+def fil(cod):
+    fechas=list()
+    doc = minidom.parse("estadistica.xml")
+    estadisticas=doc.getElementsByTagName("ESTADISTICA")
+    for esta in estadisticas:
+        fecha=esta.getElementsByTagName("FECHA")[0].firstChild.data
+        errores=esta.getElementsByTagName("ERORRES")
+        for er in errores:
+            error=er.getElementsByTagName("ERROR")
+            for e in error:
+                #fechas.append(e.getElementsByTagName("CODIGO")[0].firstChild.data)
+                if cod==e.getElementsByTagName("CODIGO")[0].firstChild.data:
+                    fechas.append(fecha)
+    return fechas
+
+
+def filtrar(fe):
+    linea=list()
+    doc = minidom.parse("estadistica.xml")
+    estadisticas=doc.getElementsByTagName("ESTADISTICA")
+    for esta in estadisticas:
+        if fe == esta.getElementsByTagName("FECHA")[0].firstChild.data:
+            report=esta.getElementsByTagName("REPORTADO_POR") 
+            for re in report:
+                usuario=re.getElementsByTagName("USUARIO")
+                for u in usuario:
+                    linea.append(u.getElementsByTagName("EMAIL")[0].firstChild.data)
+                    #linea.append(u.getElementsByTagName("CANTIDAD_MENSAJES")[0].firstChild.data)               
+            return linea
+    return None
+            
+            
 def separacion(ruta):
     eventos=list()
     estoy=False

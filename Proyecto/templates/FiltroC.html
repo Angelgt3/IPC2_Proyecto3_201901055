@@ -2,7 +2,7 @@
 <html>
 	{% load static %}
 	<head>
-		<link rel="stylesheet"  href="{% static 'principal.css' %}">
+	    <link rel="stylesheet"  href="{% static 'Filtros.css' %}">
 	</head>
 	<body>
         <div class="arriba">
@@ -26,18 +26,22 @@
                 <input id="submit" type="submit" value="Filtrar por Fecha y usuario" class="css_input">
                 <h3>Fecha</h3><input type="text" name="ffecha" class="css_input">
             </form>
-
         </div>
-        <div id="entrada">
-            <h2>Archivo de entrada</h2>
-            <textarea name="comentarios" rows="30" cols="70">{{texto1}}
-            </textarea>
-        </div>
-        <div id="salida">
-            <h2>Archivo de salida</h2>
-            <textarea name="comentarios2" rows="30" cols="70">{{texto2}}
-            </textarea>
-        </div>
-        
+        <div id="tabla">
+            <table>
+                <tr>
+                    <td><strong>No.</strong></td>
+                    <td><strong>Codigo</strong></td>
+                    <td><strong>Fecha</strong></td>
+                </tr>  
+                    {% for a in fecha %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{codigo}}</td>
+                            <td>{{a}}</td>
+                        </tr>
+                    {% endfor %}
+            </table>
+        </div>        
     </body>
 </html>

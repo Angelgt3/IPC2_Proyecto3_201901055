@@ -2,7 +2,7 @@
 <html>
 	{% load static %}
 	<head>
-		<link rel="stylesheet"  href="{% static 'principal.css' %}">
+		<link rel="stylesheet"  href="{% static 'Info.css' %}">
 	</head>
 	<body>
         <div class="arriba">
@@ -28,16 +28,13 @@
             </form>
 
         </div>
-        <div id="entrada">
-            <h2>Archivo de entrada</h2>
-            <textarea name="comentarios" rows="30" cols="70">{{texto1}}
-            </textarea>
+        <div id="ifo">
+            <h2>Informacion del Estudiante</h2>
+            <p>Nombre: Angel Geovany Aragón Pérez</p>
+            <p>Carnet: 201901055</p>
+            <p>Introduccion a la programacion y computacion 2 seccion 'A</p>
+            <p>Ingenieria en Ciencias y Sistemas</p>
+            <p>4to Semestre</p>
         </div>
-        <div id="salida">
-            <h2>Archivo de salida</h2>
-            <textarea name="comentarios2" rows="30" cols="70">{{texto2}}
-            </textarea>
-        </div>
-        
     </body>
 </html>
