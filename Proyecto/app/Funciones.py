@@ -1,5 +1,7 @@
 import xml.etree.cElementTree as ET
 import webbrowser
+import io
+import os
 from xml.dom import minidom
 
 def doc():
@@ -21,7 +23,9 @@ def fil(cod):
             for e in error:
                 #fechas.append(e.getElementsByTagName("CODIGO")[0].firstChild.data)
                 if cod==e.getElementsByTagName("CODIGO")[0].firstChild.data:
-                    fechas.append(fecha)
+                    for b in range(int(e.getElementsByTagName("CANTIDAD_MENSAJES")[0].firstChild.data)):
+                        fechas.append(fecha)
+    grafica("Codigo","Fecha",cod,fechas)
     return fechas
 
 
@@ -35,12 +39,28 @@ def filtrar(fe):
             for re in report:
                 usuario=re.getElementsByTagName("USUARIO")
                 for u in usuario:
-                    linea.append(u.getElementsByTagName("EMAIL")[0].firstChild.data)
+                    for b in range(int(u.getElementsByTagName("CANTIDAD_MENSAJES")[0].firstChild.data)):
+                        linea.append(u.getElementsByTagName("EMAIL")[0].firstChild.data)
                     #linea.append(u.getElementsByTagName("CANTIDAD_MENSAJES")[0].firstChild.data)               
-            return linea
-    return None
-            
-            
+    grafica("Fecha","Usuario",fe,linea)
+    return linea
+
+def grafica(dato1,dato2,const,vector):
+    archivo=open(f'grafica.dot','w')
+    contenido="digraph grap{ node [shape=plaintext]"
+    contenido+='a [label=<<table border="1" cellborder="1" cellspacing="3">'
+    contenido+=f'<tr><td><b>No</b></td><td><b>{dato1}</b></td><td><b>{dato2}</b></td></tr>'
+    for a in range(len(vector)):
+        contenido+=f'<tr><td>{a+1}</td><td>{const}</td><td>{vector[a]}</td></tr>'
+    contenido+="</table>>]; }"
+    archivo.write(contenido)
+    archivo.close()
+    try:
+        os.system(f'dot -Tjpg grafica.dot -o grafica.jpg')
+    except:
+        print("error con generar la imagen")
+
+
 def separacion(ruta):
     eventos=list()
     estoy=False

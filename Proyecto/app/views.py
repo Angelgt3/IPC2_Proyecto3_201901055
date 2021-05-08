@@ -48,9 +48,7 @@ def Filtros(request):
         mensaje2 = archivo.read()
         usuarios=Fun.filtrar(fecha)
         archivo.close()
-    
-        return render(request,'Filtros.html',{'fecha':fecha,'usuario':usuarios})
-        
+        return render(request,'Filtros.html',{'fecha':fecha,'usuario':usuarios})    
     except:
         return render(request,'principal.html')
 
